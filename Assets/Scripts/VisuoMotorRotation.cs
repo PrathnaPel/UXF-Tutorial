@@ -29,7 +29,9 @@ public class VisuoMotorRotation : MonoBehaviour
         if (clamped)
         {
             float dist = (hiddenCursor.position - startPoint.position).magnitude;
-            transform.position = startPoint.position + Vector3.forward * dist;
+            Vector3 newPos = startPoint.position + Vector3.forward * dist;
+            newPos.y = transform.position.y; // lock to 2D
+            transform.position = newPos;
         }
         else
         {
