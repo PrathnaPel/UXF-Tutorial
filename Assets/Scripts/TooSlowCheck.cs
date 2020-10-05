@@ -19,7 +19,8 @@ public class TooSlowCheck : MonoBehaviour
     }
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(0.6f);
+        float timeoutPeriod = session.CurrentTrial.settings.GetFloat("timeout_period");
+        yield return new WaitForSeconds(timeoutPeriod);
 
         session.CurrentTrial.result["outcome"] = "tooslow";
         session.EndCurrentTrial();

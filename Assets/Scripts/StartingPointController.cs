@@ -19,7 +19,8 @@ public class StartingPointController : MonoBehaviour
     }
     IEnumerator Countdown()
     {
-        yield return new WaitForSeconds(0.5f);
+        float timePeriod = session.settings.GetFloat("startpoint_period");
+        yield return new WaitForSeconds(timePeriod);
         mat.color = green;
         session.BeginNextTrial();
     }
